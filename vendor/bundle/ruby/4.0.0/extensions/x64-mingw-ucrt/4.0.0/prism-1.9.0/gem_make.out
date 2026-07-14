@@ -1,0 +1,45 @@
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/prism-1.9.0/ext/prism
+C:/Ruby40-x64/bin/ruby.exe extconf.rb
+checking for prism.h in C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/prism-1.9.0/include... yes
+checking for prism/extension.h in C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/prism-1.9.0/ext... yes
+checking for whether -fvisibility=hidden is accepted as CFLAGS... yes
+creating Makefile
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/prism-1.9.0/ext/prism
+make -j1 DESTDIR\= sitearchdir\=./.gem.20260713-392-k9q6uy sitelibdir\=./.gem.20260713-392-k9q6uy clean
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/prism-1.9.0/ext/prism
+make -j1 DESTDIR\= sitearchdir\=./.gem.20260713-392-k9q6uy sitelibdir\=./.gem.20260713-392-k9q6uy
+generating prism-x64-mingw-ucrt.def
+compiling api_node.c
+compiling api_pack.c
+compiling extension.c
+compiling ./../../src/diagnostic.c
+compiling ./../../src/encoding.c
+compiling ./../../src/node.c
+compiling ./../../src/options.c
+compiling ./../../src/pack.c
+compiling ./../../src/prettyprint.c
+compiling ./../../src/prism.c
+compiling ./../../src/regexp.c
+compiling ./../../src/serialize.c
+compiling ./../../src/static_literals.c
+compiling ./../../src/token_type.c
+compiling ./../../src/util/pm_buffer.c
+compiling ./../../src/util/pm_char.c
+compiling ./../../src/util/pm_constant_pool.c
+compiling ./../../src/util/pm_integer.c
+compiling ./../../src/util/pm_list.c
+compiling ./../../src/util/pm_memchr.c
+compiling ./../../src/util/pm_newline_list.c
+compiling ./../../src/util/pm_string.c
+compiling ./../../src/util/pm_strncasecmp.c
+compiling ./../../src/util/pm_strpbrk.c
+linking shared-object prism/prism.so
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/prism-1.9.0/ext/prism
+make -j1 DESTDIR\= sitearchdir\=./.gem.20260713-392-k9q6uy sitelibdir\=./.gem.20260713-392-k9q6uy install
+/usr/bin/install -c -m 0755 prism.so ./.gem.20260713-392-k9q6uy/prism
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/prism-1.9.0/ext/prism
+make DESTDIR\= sitearchdir\=./.gem.20260713-392-k9q6uy sitelibdir\=./.gem.20260713-392-k9q6uy clean

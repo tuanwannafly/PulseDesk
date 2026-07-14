@@ -1,0 +1,96 @@
+<% content_for :title, 'Dashboard' %>
+
+<h1 class="text-2xl font-semibold mb-2">Dashboard</h1>
+<p class="text-sm text-slate-500 mb-6">Workspace: <%= Current.account.company_name %></p>
+
+<div class="grid grid-cols-3 gap-3 mb-6">
+  <div class="card text-center">
+    <div class="text-xs uppercase text-slate-500">Open</div>
+    <div class="text-3xl font-semibold text-indigo-600"><%= @open_count %></div>
+  </div>
+  <div class="card text-center">
+    <div class="text-xs uppercase text-slate-500">Pending</div>
+    <div class="text-3xl font-semibold text-yellow-600"><%= @pending_count %></div>
+  </div>
+  <div class="card text-center">
+    <div class="text-xs uppercase text-slate-500">Resolved</div>
+    <div class="text-3xl font-semibold text-green-600"><%= @resolved_count %></div>
+  </div>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+  <div class="card">
+    <h2 class="font-semibold mb-3">Avg response time per agent (hours)</h2>
+    <% if @response_q.rows.any? %>
+      <% max_hours = @response_q.rows.map { |r| r['avg_response_hours'].to_f }.max.to_f %>
+      <ul class="space-y-2">
+        <% @response_q.rows.each do |row| %>
+          <% hrs = row['avg_response_hours'].to_f %>
+          <% pct = max_hours.zero? ? 0 : (hrs / max_hours * 100).round %>
+          <li>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="font-medium"><%= row['agent_name'] %></span>
+              <span class="text-slate-500"><%= hrs.round(2) %> h (<%= row['tickets_handled'] %> tickets)</span>
+            </div>
+            <div class="h-2 bg-slate-100 rounded">
+              <div class="h-2 bg-indigo-600 rounded" style="width: <%= pct %>%"></div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-sm text-slate-400">No data yet.</p>
+    <% end %>
+  </div>
+
+  <div class="card">
+    <h2 class="font-semibold mb-3">Sentiment trend (weekly)</h2>
+    <% if @sentiment_q.rows.any? %>
+      <ul class="space-y-2">
+        <% @sentiment_q.rows.each do |row| %>
+          <% score = row['avg_sentiment'].to_f %>
+          <% pct   = ((score + 1) / 2 * 100).round %>
+          <li>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="font-medium"><%= row['week'] %></span>
+              <span class="text-slate-500"><%= score.round(2) %> (<%= row['ticket_count'] %> tickets)</span>
+            </div>
+            <div class="h-2 bg-slate-100 rounded">
+              <% color = score >= 0.2 ? 'bg-green-500' : score <= -0.2 ? 'bg-red-500' : 'bg-slate-400' %>
+              <div class="h-2 rounded <%= color %>" style="width: <%= pct %>%"></div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-sm text-slate-400">No data yet — wait for the AI classifier to process a few tickets.</p>
+    <% end %>
+  </div>
+
+  <div class="card lg:col-span-2">
+    <h2 class="font-semibold mb-3">Top tags</h2>
+    <% if @tags_q.rows.any? %>
+      <% max_count = @tags_q.rows.map { |r| r['usage_count'].to_i }.max.to_i %>
+      <ul class="space-y-2">
+        <% @tags_q.rows.each do |row| %>
+          <% count = row['usage_count'].to_i %>
+          <% pct   = max_count.zero? ? 0 : (count.to_f / max_count * 100).round %>
+          <li>
+            <div class="flex justify-between text-sm mb-1">
+              <span class="font-medium flex items-center gap-2">
+                <span class="inline-block w-3 h-3 rounded-full" style="background: <%= row['tag_color'] %>"></span>
+                <%= row['tag_name'] %>
+              </span>
+              <span class="text-slate-500"><%= count %></span>
+            </div>
+            <div class="h-2 bg-slate-100 rounded">
+              <div class="h-2 bg-indigo-500 rounded" style="width: <%= pct %>%"></div>
+            </div>
+          </li>
+        <% end %>
+      </ul>
+    <% else %>
+      <p class="text-sm text-slate-400">No tags in use yet.</p>
+    <% end %>
+  </div>
+</div>

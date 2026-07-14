@@ -1,0 +1,77 @@
+databases:
+  - name: pulsedesk-db
+    plan: starter
+    databaseName: pulsedesk_production
+    user: pulsedesk
+
+services:
+  - type: web
+    name: pulsedesk-web
+    runtime: ruby
+    plan: starter
+    buildCommand: bundle install
+    startCommand: bundle exec puma -C config/puma.rb
+    envVars:
+      - key: DATABASE_HOST
+        fromDatabase:
+          name: pulsedesk-db
+          property: host
+      - key: DATABASE_USERNAME
+        fromDatabase:
+          name: pulsedesk-db
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: pulsedesk-db
+          property: password
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: pulsedesk-redis
+          property: connectionString
+      - key: SECRET_KEY_BASE
+        generateValue: true
+      - key: RAILS_MASTER_KEY
+        sync: false
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_PROVIDER
+        value: openrouter
+      - key: LLM_MODEL
+        value: meta-llama/llama-3.1-8b-instruct:free
+
+  - type: worker
+    name: pulsedesk-worker
+    runtime: ruby
+    plan: starter
+    buildCommand: bundle install
+    startCommand: bundle exec sidekiq -C config/sidekiq.yml
+    envVars:
+      - key: DATABASE_HOST
+        fromDatabase:
+          name: pulsedesk-db
+          property: host
+      - key: DATABASE_USERNAME
+        fromDatabase:
+          name: pulsedesk-db
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: pulsedesk-db
+          property: password
+      - key: REDIS_URL
+        fromService:
+          type: redis
+          name: pulsedesk-redis
+          property: connectionString
+      - key: LLM_API_KEY
+        sync: false
+      - key: LLM_PROVIDER
+        value: openrouter
+      - key: LLM_MODEL
+        value: meta-llama/llama-3.1-8b-instruct:free
+
+  - type: redis
+    name: pulsedesk-redis
+    plan: starter
+    ipAllowList: []

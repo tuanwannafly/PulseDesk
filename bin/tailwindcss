@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+require 'bundler/setup'
+require 'bootsnap/setup' if ENV['DISABLE_BOOTSNAP'].nil?
+load Gem.bin_path('tailwindcss-rails', 'tailwindcss')

@@ -1,0 +1,106 @@
+<% content_for :title, @ticket.subject %>
+
+<div class="mb-4">
+  <%= link_to '← Back to inbox', tickets_path, class: 'text-sm text-slate-500 hover:text-slate-700' %>
+</div>
+
+<div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+  <div class="lg:col-span-2 card">
+    <div class="flex items-start justify-between mb-4">
+      <div>
+        <h1 class="text-xl font-semibold"><%= @ticket.subject %></h1>
+        <p class="text-sm text-slate-500 mt-1">
+          From <%= @ticket.customer.name %> · opened <%= time_ago_in_words(@ticket.created_at) %> ago
+        </p>
+      </div>
+      <div class="flex gap-2">
+        <% unless @ticket.resolved? %>
+          <%= button_to 'Resolve', resolve_ticket_path(@ticket), method: :post,
+                        class: 'btn-secondary' %>
+        <% else %>
+          <%= button_to 'Reopen', reopen_ticket_path(@ticket), method: :post,
+                        class: 'btn-secondary' %>
+        <% end %>
+      </div>
+    </div>
+
+    <% if @ticket.ai_summary.present? %>
+      <div class="bg-indigo-50 border border-indigo-100 rounded p-3 mb-4 text-sm">
+        <div class="text-xs uppercase tracking-wide text-indigo-700 font-semibold mb-1">AI summary</div>
+        <p class="text-slate-700"><%= @ticket.ai_summary %></p>
+        <% if @ticket.sentiment_score %>
+          <div class="mt-2 text-xs">
+            <span class="badge bg-<%= @ticket.sentiment_color %>-100 text-<%= @ticket.sentiment_color %>-700">
+              sentiment: <%= @ticket.sentiment_label %> (<%= @ticket.sentiment_score.round(2) %>)
+            </span>
+            <% if @ticket.ai_suggested_priority.present? %>
+              <span class="badge bg-slate-100 text-slate-700 ml-1">
+                suggested priority: <%= @ticket.ai_suggested_priority %>
+              </span>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+
+    <div class="space-y-3 mt-4">
+      <% @messages.each do |m| %>
+        <div class="border-l-4 pl-3 <%= m.sender_type == 'agent' ? 'border-indigo-400' : 'border-slate-300' %>">
+          <div class="text-xs text-slate-500 mb-1">
+            <strong class="text-slate-700">
+              <%= m.sender_type == 'agent' ? (m.user&.name || 'Agent') : m.customer&.name %>
+            </strong>
+            · <%= m.created_at.strftime('%b %d, %H:%M') %>
+          </div>
+          <div class="text-sm whitespace-pre-wrap text-slate-800"><%= m.body %></div>
+        </div>
+      <% end %>
+    </div>
+
+    <% unless @ticket.resolved? %>
+      <%= form_with model: @message, url: ticket_ticket_messages_path(@ticket),
+                    local: true, class: 'mt-6 space-y-2' do |f| %>
+        <%= f.text_area :body, rows: 4, required: true, placeholder: 'Type your reply…',
+                          class: 'field-input' %>
+        <%= f.submit 'Send reply', class: 'btn-primary' %>
+      <% end %>
+    <% end %>
+  </div>
+
+  <div class="card">
+    <h2 class="font-semibold mb-3">Details</h2>
+    <dl class="text-sm space-y-2">
+      <div class="flex justify-between">
+        <dt class="text-slate-500">Status</dt>
+        <dd><span class="badge bg-slate-100 text-slate-700"><%= @ticket.status %></span></dd>
+      </div>
+      <div class="flex justify-between">
+        <dt class="text-slate-500">Priority</dt>
+        <dd><span class="badge bg-slate-100 text-slate-700"><%= @ticket.priority %></span></dd>
+      </div>
+      <div class="flex justify-between">
+        <dt class="text-slate-500">Assigned</dt>
+        <dd><%= @ticket.assigned_to&.name || '—' %></dd>
+      </div>
+      <div class="flex justify-between">
+        <dt class="text-slate-500">First response</dt>
+        <dd><%= @ticket.first_response_at ? time_ago_in_words(@ticket.first_response_at) + ' ago' : '—' %></dd>
+      </div>
+      <div class="flex justify-between">
+        <dt class="text-slate-500">Tags</dt>
+        <dd>
+          <% @ticket.tags.each do |tag| %>
+            <span class="badge bg-slate-100 text-slate-700 mr-1" style="color: <%= tag.color %>">
+              <%= tag.name %>
+            </span>
+          <% end %>
+        </dd>
+      </div>
+    </dl>
+
+    <% unless @ticket.assigned_to_id.present? %>
+      <%= button_to 'Claim this ticket', claim_ticket_path(@ticket), method: :post,
+                    class: 'btn-primary w-full mt-4 justify-center' %>
+    <% end %>
+  </div>
+</div>

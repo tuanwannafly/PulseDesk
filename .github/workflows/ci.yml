@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [main, master, develop]
+  pull_request:
+    branches: [main, master, develop]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_DB: pulsedesk_test
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd "pg_isready -U postgres"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+
+      redis:
+        image: redis:7
+        ports: ['6379:6379']
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 5s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      RAILS_ENV: test
+      DATABASE_HOST: localhost
+      DATABASE_PORT: 5432
+      DATABASE_USERNAME: postgres
+      DATABASE_PASSWORD: postgres
+      DATABASE_NAME_TEST: pulsedesk_test
+      REDIS_URL: redis://localhost:6379/0
+      LLM_PROVIDER: openrouter
+      LLM_API_KEY: test-key-not-used
+      LLM_MODEL: meta-llama/llama-3.1-8b-instruct:free
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.2'
+          bundler-cache: true
+
+      - name: Prepare DB
+        run: |
+          bin/rails db:create
+          bin/rails db:schema:load
+
+      - name: Run RuboCop
+        run: bundle exec rubocop --no-fail-level=convention
+
+      - name: Run RSpec
+        run: bundle exec rspec --format documentation --format progress
+        env:
+          RAILS_ENV: test

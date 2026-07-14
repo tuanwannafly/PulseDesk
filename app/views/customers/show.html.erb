@@ -1,0 +1,18 @@
+<% content_for :title, @customer.name %>
+
+<div class="mb-4"><%= link_to '← Customers', customers_path, class: 'text-sm text-slate-500' %></div>
+
+<div class="card max-w-2xl">
+  <h1 class="text-xl font-semibold mb-3"><%= @customer.name %></h1>
+  <p class="text-sm text-slate-600"><%= @customer.email %></p>
+  <% if @customer.notes.present? %>
+    <p class="text-sm mt-3 whitespace-pre-wrap"><%= @customer.notes %></p>
+  <% end %>
+
+  <h2 class="font-semibold mt-6 mb-2">Tickets (<%= @customer.tickets.size %>)</h2>
+  <ul class="text-sm space-y-1">
+    <% @customer.tickets.recent.limit(10).each do |t| %>
+      <li><%= link_to "##{t.id} · #{t.subject}", t, class: 'text-indigo-600 hover:underline' %></li>
+    <% end %>
+  </ul>
+</div>

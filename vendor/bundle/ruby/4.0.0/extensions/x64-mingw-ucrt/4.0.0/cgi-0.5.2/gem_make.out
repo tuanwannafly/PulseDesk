@@ -1,0 +1,19 @@
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/cgi-0.5.2/ext/cgi/escape
+C:/Ruby40-x64/bin/ruby.exe extconf.rb
+creating Makefile
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/cgi-0.5.2/ext/cgi/escape
+make -j1 DESTDIR\= sitearchdir\=./.gem.20260713-392-lwqzoj sitelibdir\=./.gem.20260713-392-lwqzoj clean
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/cgi-0.5.2/ext/cgi/escape
+make -j1 DESTDIR\= sitearchdir\=./.gem.20260713-392-lwqzoj sitelibdir\=./.gem.20260713-392-lwqzoj
+generating escape-x64-mingw-ucrt.def
+compiling escape.c
+linking shared-object cgi/escape.so
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/cgi-0.5.2/ext/cgi/escape
+make -j1 DESTDIR\= sitearchdir\=./.gem.20260713-392-lwqzoj sitelibdir\=./.gem.20260713-392-lwqzoj install
+/usr/bin/install -c -m 0755 escape.so ./.gem.20260713-392-lwqzoj/cgi
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/cgi-0.5.2/ext/cgi/escape
+make DESTDIR\= sitearchdir\=./.gem.20260713-392-lwqzoj sitelibdir\=./.gem.20260713-392-lwqzoj clean

@@ -1,0 +1,164 @@
+have_func: checking for fdatasync() in unistd.h... -------------------- no
+
+PATH=".;C:/Ruby40-x64/lib;C:\Ruby40-x64\bin;C:\Ruby40-x64\msys64\ucrt64\bin;C:\Ruby40-x64\msys64\usr\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;c:\Users\ASUS\AppData\Local\Programs\cursor\resources\app\node_modules\@vscode\ripgrep\bin;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\work\test\bin;C:\Users\ASUS\Downloads\WINDOWS.X64_213000_db_home_1\bin;C:\Program Files\Java\jdk-17\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\dotnet\;C:\Users\ASUS\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Kubernetes\Minikube;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Kubernetes\Minikube;C:\ProgramData\chocolatey\bin;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Program Files\Go\bin;C:\Users\ASUS\.local\bin;C:\Users\ASUS\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ASUS\Tools\gh\bin;C:\Users\ASUS\AppData\Local\Programs\cursor\resources\app\bin;C:\xampp\php;C:\Users\ASUS\composer;C:\Users\ASUS\AppData\Roaming\Composer\vendor\bin;C:\Users\ASUS\go\bin" LSAN_OPTIONS=detect_leaks=0 "gcc -o conftest.exe -IC:/Ruby40-x64/include/ruby-4.0.0/x64-mingw-ucrt -IC:/Ruby40-x64/include/ruby-4.0.0/ruby/backward -IC:/Ruby40-x64/include/ruby-4.0.0 -I. -D_WIN32_WINNT=0x0600 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -O3 -fstack-protector-strong conftest.c -L. -LC:/Ruby40-x64/lib -L. -pipe -s -fstack-protector-strong -lpthread -Wl,--no-as-needed     -lx64-ucrt-ruby400  -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi -lbcrypt  "
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <winsock2.h>
+4: #include <windows.h>
+5: int main(int argc, char **argv)
+6: {
+7:   return !!argv[argc];
+8: }
+/* end */
+
+PATH=".;C:/Ruby40-x64/lib;C:\Ruby40-x64\bin;C:\Ruby40-x64\msys64\ucrt64\bin;C:\Ruby40-x64\msys64\usr\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;c:\Users\ASUS\AppData\Local\Programs\cursor\resources\app\node_modules\@vscode\ripgrep\bin;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\work\test\bin;C:\Users\ASUS\Downloads\WINDOWS.X64_213000_db_home_1\bin;C:\Program Files\Java\jdk-17\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\dotnet\;C:\Users\ASUS\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Kubernetes\Minikube;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Kubernetes\Minikube;C:\ProgramData\chocolatey\bin;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Program Files\Go\bin;C:\Users\ASUS\.local\bin;C:\Users\ASUS\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ASUS\Tools\gh\bin;C:\Users\ASUS\AppData\Local\Programs\cursor\resources\app\bin;C:\xampp\php;C:\Users\ASUS\composer;C:\Users\ASUS\AppData\Roaming\Composer\vendor\bin;C:\Users\ASUS\go\bin" LSAN_OPTIONS=detect_leaks=0 "gcc -o conftest.exe -IC:/Ruby40-x64/include/ruby-4.0.0/x64-mingw-ucrt -IC:/Ruby40-x64/include/ruby-4.0.0/ruby/backward -IC:/Ruby40-x64/include/ruby-4.0.0 -I. -D_WIN32_WINNT=0x0600 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -O3 -fstack-protector-strong conftest.c -L. -LC:/Ruby40-x64/lib -L. -pipe -s -fstack-protector-strong -lpthread -Wl,--no-as-needed     -lx64-ucrt-ruby400  -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi -lbcrypt  "
+conftest.c: In function 't':
+conftest.c:18:57: error: 'fdatasync' undeclared (first use in this function)
+   18 | int t(void) { void ((*volatile p)()); p = (void ((*)()))fdatasync; return !p; }
+      |                                                         ^~~~~~~~~
+conftest.c:18:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: #include <unistd.h>
+ 6: 
+ 7: /*top*/
+ 8: extern int t(void);
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     int (* volatile tp)(void)=(int (*)(void))&t;
+13:     printf("%d", (*tp)());
+14:   }
+15: 
+16:   return !!argv[argc];
+17: }
+18: int t(void) { void ((*volatile p)()); p = (void ((*)()))fdatasync; return !p; }
+/* end */
+
+PATH=".;C:/Ruby40-x64/lib;C:\Ruby40-x64\bin;C:\Ruby40-x64\msys64\ucrt64\bin;C:\Ruby40-x64\msys64\usr\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;c:\Users\ASUS\AppData\Local\Programs\cursor\resources\app\node_modules\@vscode\ripgrep\bin;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\work\test\bin;C:\Users\ASUS\Downloads\WINDOWS.X64_213000_db_home_1\bin;C:\Program Files\Java\jdk-17\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\dotnet\;C:\Users\ASUS\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Kubernetes\Minikube;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Kubernetes\Minikube;C:\ProgramData\chocolatey\bin;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Program Files\Go\bin;C:\Users\ASUS\.local\bin;C:\Users\ASUS\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ASUS\Tools\gh\bin;C:\Users\ASUS\AppData\Local\Programs\cursor\resources\app\bin;C:\xampp\php;C:\Users\ASUS\composer;C:\Users\ASUS\AppData\Roaming\Composer\vendor\bin;C:\Users\ASUS\go\bin" LSAN_OPTIONS=detect_leaks=0 "gcc -o conftest.exe -IC:/Ruby40-x64/include/ruby-4.0.0/x64-mingw-ucrt -IC:/Ruby40-x64/include/ruby-4.0.0/ruby/backward -IC:/Ruby40-x64/include/ruby-4.0.0 -I. -D_WIN32_WINNT=0x0600 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -O3 -fstack-protector-strong conftest.c -L. -LC:/Ruby40-x64/lib -L. -pipe -s -fstack-protector-strong -lpthread -Wl,--no-as-needed     -lx64-ucrt-ruby400  -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi -lbcrypt  "
+C:/Ruby40-x64/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.1.0/../../../../x86_64-w64-mingw32/bin/ld.exe: C:\work\PulseDesk\tmp\ccCOpV6c.o:conftest.c:(.text+0x5): undefined reference to `fdatasync'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: #include <unistd.h>
+ 6: 
+ 7: /*top*/
+ 8: extern int t(void);
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     int (* volatile tp)(void)=(int (*)(void))&t;
+13:     printf("%d", (*tp)());
+14:   }
+15: 
+16:   return !!argv[argc];
+17: }
+18: extern void fdatasync();
+19: int t(void) { fdatasync(); return 0; }
+/* end */
+
+--------------------
+
+have_func: checking for fstatat() in sys/stat.h... -------------------- no
+
+PATH=".;C:/Ruby40-x64/lib;C:\Ruby40-x64\bin;C:\Ruby40-x64\msys64\ucrt64\bin;C:\Ruby40-x64\msys64\usr\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;c:\Users\ASUS\AppData\Local\Programs\cursor\resources\app\node_modules\@vscode\ripgrep\bin;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\work\test\bin;C:\Users\ASUS\Downloads\WINDOWS.X64_213000_db_home_1\bin;C:\Program Files\Java\jdk-17\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\dotnet\;C:\Users\ASUS\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Kubernetes\Minikube;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Kubernetes\Minikube;C:\ProgramData\chocolatey\bin;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Program Files\Go\bin;C:\Users\ASUS\.local\bin;C:\Users\ASUS\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ASUS\Tools\gh\bin;C:\Users\ASUS\AppData\Local\Programs\cursor\resources\app\bin;C:\xampp\php;C:\Users\ASUS\composer;C:\Users\ASUS\AppData\Roaming\Composer\vendor\bin;C:\Users\ASUS\go\bin" LSAN_OPTIONS=detect_leaks=0 "gcc -o conftest.exe -IC:/Ruby40-x64/include/ruby-4.0.0/x64-mingw-ucrt -IC:/Ruby40-x64/include/ruby-4.0.0/ruby/backward -IC:/Ruby40-x64/include/ruby-4.0.0 -I. -D_WIN32_WINNT=0x0600 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -O3 -fstack-protector-strong conftest.c -L. -LC:/Ruby40-x64/lib -L. -pipe -s -fstack-protector-strong -lpthread -Wl,--no-as-needed     -lx64-ucrt-ruby400  -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi -lbcrypt  "
+conftest.c: In function 't':
+conftest.c:18:57: error: 'fstatat' undeclared (first use in this function); did you mean 'fstat64'?
+   18 | int t(void) { void ((*volatile p)()); p = (void ((*)()))fstatat; return !p; }
+      |                                                         ^~~~~~~
+      |                                                         fstat64
+conftest.c:18:57: note: each undeclared identifier is reported only once for each function it appears in
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: #include <sys/stat.h>
+ 6: 
+ 7: /*top*/
+ 8: extern int t(void);
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     int (* volatile tp)(void)=(int (*)(void))&t;
+13:     printf("%d", (*tp)());
+14:   }
+15: 
+16:   return !!argv[argc];
+17: }
+18: int t(void) { void ((*volatile p)()); p = (void ((*)()))fstatat; return !p; }
+/* end */
+
+PATH=".;C:/Ruby40-x64/lib;C:\Ruby40-x64\bin;C:\Ruby40-x64\msys64\ucrt64\bin;C:\Ruby40-x64\msys64\usr\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;c:\Users\ASUS\AppData\Local\Programs\cursor\resources\app\node_modules\@vscode\ripgrep\bin;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\work\test\bin;C:\Users\ASUS\Downloads\WINDOWS.X64_213000_db_home_1\bin;C:\Program Files\Java\jdk-17\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\dotnet\;C:\Users\ASUS\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Kubernetes\Minikube;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Kubernetes\Minikube;C:\ProgramData\chocolatey\bin;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Program Files\Go\bin;C:\Users\ASUS\.local\bin;C:\Users\ASUS\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ASUS\Tools\gh\bin;C:\Users\ASUS\AppData\Local\Programs\cursor\resources\app\bin;C:\xampp\php;C:\Users\ASUS\composer;C:\Users\ASUS\AppData\Roaming\Composer\vendor\bin;C:\Users\ASUS\go\bin" LSAN_OPTIONS=detect_leaks=0 "gcc -o conftest.exe -IC:/Ruby40-x64/include/ruby-4.0.0/x64-mingw-ucrt -IC:/Ruby40-x64/include/ruby-4.0.0/ruby/backward -IC:/Ruby40-x64/include/ruby-4.0.0 -I. -D_WIN32_WINNT=0x0600 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -O3 -fstack-protector-strong conftest.c -L. -LC:/Ruby40-x64/lib -L. -pipe -s -fstack-protector-strong -lpthread -Wl,--no-as-needed     -lx64-ucrt-ruby400  -lshell32 -lws2_32 -liphlpapi -limagehlp -lshlwapi -lbcrypt  "
+C:/Ruby40-x64/msys64/ucrt64/bin/../lib/gcc/x86_64-w64-mingw32/16.1.0/../../../../x86_64-w64-mingw32/bin/ld.exe: C:\work\PulseDesk\tmp\ccFxAanT.o:conftest.c:(.text+0x5): undefined reference to `fstatat'
+collect2.exe: error: ld returned 1 exit status
+checked program was:
+/* begin */
+ 1: #include "ruby.h"
+ 2: 
+ 3: #include <winsock2.h>
+ 4: #include <windows.h>
+ 5: #include <sys/stat.h>
+ 6: 
+ 7: /*top*/
+ 8: extern int t(void);
+ 9: int main(int argc, char **argv)
+10: {
+11:   if (argc > 1000000) {
+12:     int (* volatile tp)(void)=(int (*)(void))&t;
+13:     printf("%d", (*tp)());
+14:   }
+15: 
+16:   return !!argv[argc];
+17: }
+18: extern void fstatat();
+19: int t(void) { fstatat(); return 0; }
+/* end */
+
+--------------------
+
+append_cflags: checking for whether -O3 is accepted as CFLAGS... -------------------- yes
+
+PATH=".;C:/Ruby40-x64/lib;C:\Ruby40-x64\bin;C:\Ruby40-x64\msys64\ucrt64\bin;C:\Ruby40-x64\msys64\usr\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;c:\Users\ASUS\AppData\Local\Programs\cursor\resources\app\node_modules\@vscode\ripgrep\bin;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\work\test\bin;C:\Users\ASUS\Downloads\WINDOWS.X64_213000_db_home_1\bin;C:\Program Files\Java\jdk-17\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\dotnet\;C:\Users\ASUS\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Kubernetes\Minikube;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Kubernetes\Minikube;C:\ProgramData\chocolatey\bin;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Program Files\Go\bin;C:\Users\ASUS\.local\bin;C:\Users\ASUS\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ASUS\Tools\gh\bin;C:\Users\ASUS\AppData\Local\Programs\cursor\resources\app\bin;C:\xampp\php;C:\Users\ASUS\composer;C:\Users\ASUS\AppData\Roaming\Composer\vendor\bin;C:\Users\ASUS\go\bin" LSAN_OPTIONS=detect_leaks=0 "gcc -IC:/Ruby40-x64/include/ruby-4.0.0/x64-mingw-ucrt -IC:/Ruby40-x64/include/ruby-4.0.0/ruby/backward -IC:/Ruby40-x64/include/ruby-4.0.0 -I. -D_WIN32_WINNT=0x0600 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -O3 -fstack-protector-strong  -O3 -Werror -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <winsock2.h>
+4: #include <windows.h>
+5: int main(int argc, char **argv)
+6: {
+7:   return !!argv[argc];
+8: }
+/* end */
+
+--------------------
+
+append_cflags: checking for whether -std=c99 is accepted as CFLAGS... -------------------- yes
+
+PATH=".;C:/Ruby40-x64/lib;C:\Ruby40-x64\bin;C:\Ruby40-x64\msys64\ucrt64\bin;C:\Ruby40-x64\msys64\usr\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;C:\Ruby40-x64\bin;c:\Users\ASUS\AppData\Local\Programs\cursor\resources\app\node_modules\@vscode\ripgrep\bin;C:\Program Files (x86)\Microsoft SDKs\Azure\CLI2\wbin;C:\work\test\bin;C:\Users\ASUS\Downloads\WINDOWS.X64_213000_db_home_1\bin;C:\Program Files\Java\jdk-17\bin;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\Microsoft SQL Server\Client SDK\ODBC\170\Tools\Binn\;C:\Program Files (x86)\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\Tools\Binn\;C:\Program Files\Microsoft SQL Server\150\DTS\Binn\;C:\Program Files\dotnet\;C:\Users\ASUS\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\Program Files\Kubernetes\Minikube;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;C:\Program Files\Kubernetes\Minikube;C:\ProgramData\chocolatey\bin;C:\Program Files\Cloudflare\Cloudflare WARP\;C:\Program Files\Go\bin;C:\Users\ASUS\.local\bin;C:\Users\ASUS\AppData\Local\nvm;C:\nvm4w\nodejs;C:\Users\ASUS\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\ASUS\Tools\gh\bin;C:\Users\ASUS\AppData\Local\Programs\cursor\resources\app\bin;C:\xampp\php;C:\Users\ASUS\composer;C:\Users\ASUS\AppData\Roaming\Composer\vendor\bin;C:\Users\ASUS\go\bin" LSAN_OPTIONS=detect_leaks=0 "gcc -IC:/Ruby40-x64/include/ruby-4.0.0/x64-mingw-ucrt -IC:/Ruby40-x64/include/ruby-4.0.0/ruby/backward -IC:/Ruby40-x64/include/ruby-4.0.0 -I. -D_WIN32_WINNT=0x0600 -D__MINGW_USE_VC2005_COMPAT -D_FILE_OFFSET_BITS=64  -O3 -fstack-protector-strong -O3  -std=c99 -Werror -c conftest.c"
+checked program was:
+/* begin */
+1: #include "ruby.h"
+2: 
+3: #include <winsock2.h>
+4: #include <windows.h>
+5: int main(int argc, char **argv)
+6: {
+7:   return !!argv[argc];
+8: }
+/* end */
+
+--------------------
+

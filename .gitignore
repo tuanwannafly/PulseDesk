@@ -1,0 +1,62 @@
+# Ruby
+*.gem
+*.rbc
+/.config
+/coverage
+/.bundle
+InstalledFiles
+/pkg/
+/spec/reports/
+/spec/examples.txt
+/test/tmp/
+/test/version_tmp/
+/tmp/
+.byebug_history
+
+# Rails
+/log/*
+!/log/.keep
+/tmp/*
+!/tmp/.keep
+/storage/*
+!/storage/.keep
+/public/assets
+.byebug_history
+*.css.map
+
+# Master key for credentials (use ENV in production)
+/config/master.key
+/config/credentials/*.key
+/config/credentials/*.yml.enc
+
+# Local dotenv
+.env
+.env.*
+!.env.example
+
+# Ignore vscode AI rules
+.github\instructions\codacy.instructions.md
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Node
+/node_modules
+
+# IDE
+.idea/
+.vscode/
+*.swp
+
+# Boosts
+.boosts
+
+# Generated
+/public/packs
+/public/packs-test
+/node_modules
+/yarn-error.log
+yarn-debug.log*
+.misspell-fixes
+.pt_syntax_violations

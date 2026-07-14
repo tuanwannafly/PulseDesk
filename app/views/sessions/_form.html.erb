@@ -1,0 +1,32 @@
+<%= form_with url: login_path, local: true, class: 'space-y-4' do |f| %>
+  <div>
+    <%= f.label :subdomain, 'Workspace subdomain', class: 'field-label' %>
+    <div class="flex rounded shadow-sm">
+      <%= f.text_field :subdomain, required: true, placeholder: 'acme',
+                        value: params[:subdomain],
+                        class: 'field-input rounded-r-none' %>
+      <span class="inline-flex items-center px-3 rounded-r border border-l-0 border-slate-300 bg-slate-50 text-slate-500 text-sm">
+        .pulsedesk.app
+      </span>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :email, class: 'field-label' %>
+    <%= f.email_field :email, required: true, autocomplete: 'email',
+                      class: 'field-input' %>
+  </div>
+
+  <div>
+    <%= f.label :password, class: 'field-label' %>
+    <%= f.password_field :password, required: true, autocomplete: 'current-password',
+                          class: 'field-input' %>
+  </div>
+
+  <%= f.submit 'Sign in', class: 'btn-primary w-full justify-center' %>
+<% end %>
+
+<p class="text-sm text-slate-600 mt-6 text-center">
+  No account?
+  <%= link_to 'Create one', signup_path, class: 'text-indigo-600 hover:underline' %>
+</p>

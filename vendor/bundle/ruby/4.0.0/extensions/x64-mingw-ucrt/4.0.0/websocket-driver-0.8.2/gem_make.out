@@ -1,0 +1,19 @@
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/websocket-driver-0.8.2/ext/websocket-driver
+C:/Ruby40-x64/bin/ruby.exe extconf.rb
+creating Makefile
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/websocket-driver-0.8.2/ext/websocket-driver
+make -j1 DESTDIR\= sitearchdir\=./.gem.20260713-392-t6jaxd sitelibdir\=./.gem.20260713-392-t6jaxd clean
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/websocket-driver-0.8.2/ext/websocket-driver
+make -j1 DESTDIR\= sitearchdir\=./.gem.20260713-392-t6jaxd sitelibdir\=./.gem.20260713-392-t6jaxd
+generating websocket_mask-x64-mingw-ucrt.def
+compiling websocket_mask.c
+linking shared-object websocket_mask.so
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/websocket-driver-0.8.2/ext/websocket-driver
+make -j1 DESTDIR\= sitearchdir\=./.gem.20260713-392-t6jaxd sitelibdir\=./.gem.20260713-392-t6jaxd install
+/usr/bin/install -c -m 0755 websocket_mask.so ./.gem.20260713-392-t6jaxd
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/websocket-driver-0.8.2/ext/websocket-driver
+make DESTDIR\= sitearchdir\=./.gem.20260713-392-t6jaxd sitelibdir\=./.gem.20260713-392-t6jaxd clean

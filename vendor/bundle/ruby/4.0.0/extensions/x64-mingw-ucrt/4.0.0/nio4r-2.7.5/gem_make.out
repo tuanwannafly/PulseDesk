@@ -1,0 +1,18 @@
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/nio4r-2.7.5/ext/nio4r
+C:/Ruby40-x64/bin/ruby.exe extconf.rb
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/nio4r-2.7.5/ext/nio4r
+make -j1 DESTDIR\= sitearchdir\=./.gem.20260713-392-7uw3xp sitelibdir\=./.gem.20260713-392-7uw3xp clean
+make: *** No rule to make target 'clean'.  Stop.
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/nio4r-2.7.5/ext/nio4r
+make -j1 DESTDIR\= sitearchdir\=./.gem.20260713-392-7uw3xp sitelibdir\=./.gem.20260713-392-7uw3xp
+make: Nothing to be done for 'all'.
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/nio4r-2.7.5/ext/nio4r
+make -j1 DESTDIR\= sitearchdir\=./.gem.20260713-392-7uw3xp sitelibdir\=./.gem.20260713-392-7uw3xp install
+make: Nothing to be done for 'install'.
+
+current directory: C:/work/PulseDesk/vendor/bundle/ruby/4.0.0/gems/nio4r-2.7.5/ext/nio4r
+make DESTDIR\= sitearchdir\=./.gem.20260713-392-7uw3xp sitelibdir\=./.gem.20260713-392-7uw3xp clean
+make: *** No rule to make target 'clean'.  Stop.

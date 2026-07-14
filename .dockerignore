@@ -1,0 +1,15 @@
+node_modules
+.bundle
+log/*
+tmp/*
+storage/*
+public/assets
+.git
+.github
+spec
+test
+coverage
+.env*
+!.env.example
+.dockerignore
+Dockerfile

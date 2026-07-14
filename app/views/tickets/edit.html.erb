@@ -1,0 +1,41 @@
+<% content_for :title, "Edit ticket ##{@ticket.id}" %>
+
+<h1 class="text-2xl font-semibold mb-6">Edit ticket</h1>
+
+<%= form_with model: @ticket, local: true, class: 'card max-w-2xl space-y-4' do |f| %>
+  <div>
+    <%= f.label :subject, class: 'field-label' %>
+    <%= f.text_field :subject, required: true, class: 'field-input' %>
+  </div>
+
+  <div class="grid grid-cols-2 gap-3">
+    <div>
+      <%= f.label :priority, class: 'field-label' %>
+      <%= f.select :priority, Ticket::PRIORITIES.map { |p| [p.titleize, p] }, {}, class: 'field-input' %>
+    </div>
+    <div>
+      <%= f.label :status, class: 'field-label' %>
+      <%= f.select :status, Ticket::STATUSES.map { |s| [s.titleize, s] }, {}, class: 'field-input' %>
+    </div>
+  </div>
+
+  <div>
+    <%= f.label :assigned_to_id, 'Assigned to', class: 'field-label' %>
+    <%= f.collection_select :assigned_to_id, User.order(:name), :id, :name,
+                            { include_blank: '— unassigned —' }, class: 'field-input' %>
+  </div>
+
+  <div>
+    <%= f.label :tag_ids, 'Tags', class: 'field-label' %>
+    <%= f.collection_check_boxes :tag_ids, Tag.order(:name), :id, :name do |b| %>
+      <label class="inline-flex items-center mr-3 text-sm">
+        <%= b.check_box(class: 'mr-1') %><%= b.text %>
+      </label>
+    <% end %>
+  </div>
+
+  <div class="flex justify-end gap-2">
+    <%= link_to 'Cancel', @ticket, class: 'btn-secondary' %>
+    <%= f.submit 'Save changes', class: 'btn-primary' %>
+  </div>
+<% end %>
